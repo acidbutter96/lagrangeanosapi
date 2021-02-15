@@ -1,0 +1,37 @@
+{
+  "name": "lagrangeanosapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "build": "sucrase ./src -d ./outDir --transforms imports"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acidbutter96/lagrangeanosapi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acidbutter96/lagrangeanosapi/issues"
+  },
+  "homepage": "https://github.com/acidbutter96/lagrangeanosapi#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cpf-cnpj-validator": "^1.0.3",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.0",
+    "mongoose": "^5.9.6",
+    "mongoose-paginate-v2": "^1.3.6",
+    "multer": "^1.4.2",
+    "yup": "^0.28.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sucrase": "^3.17.1"
+  }
+}
