@@ -7,6 +7,9 @@ import Student from './app/models/Student'
 
 const routes = new Router()
 
+routes.get('v1',(req,res)=>{
+    return res.send('Lagrangeanos API')
+})
 routes.post('/v1/products',ProductController.create)
 
 routes.post('/v1/students',StudentController.create)
