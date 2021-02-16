@@ -6,6 +6,10 @@ const Student = new mongoose.Schema({
         type: String,
         required: true
     },
+    username: {
+        type: String,
+        require: true
+    },
     document: {
         type: String,
         required: true
@@ -14,9 +18,22 @@ const Student = new mongoose.Schema({
         type: String,
         required: true
     },
+    telephone: {
+        type: String,
+        required: true
+    },
+    telephone2: {
+        type: String
+    },
+    gender: {
+        type: Number
+    },
     birthday: {
         type: Date,
         required: true
+    },
+    grade: {
+        type: Number
     },
     course: {
         type: String,
@@ -26,8 +43,8 @@ const Student = new mongoose.Schema({
         type: String,
         required: true
     },
-    classes: {
-        type: String,
+    products: {
+        type: Object,
         required: true
     },
     monitoring: {
