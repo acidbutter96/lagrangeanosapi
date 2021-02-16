@@ -1,13 +1,15 @@
 import * as Yup from 'yup'
 import bcrypt from 'bcryptjs'
-import Class from '../models/Class'
+import Product from '../models/Product'
 
-class ClassController {
+class ProductController {
 
     async create(req, res) {
         const schema = Yup.object().shape({
+            product: Yup.string()
+                .required(),
             subject: Yup.string()
-            .required(),
+                .required(),
             subclass: Yup.string()
                 .required(),
             vacancies: Yup.number()
@@ -15,9 +17,9 @@ class ClassController {
             studentsin: Yup.number()
                 .required(),
             professor: Yup.string()
-            .required(),
+                .required(),
             price: Yup.number()
-            .required()
+                .required()
         })
 
         if (!(await schema.isValid(req.body))) {
@@ -30,7 +32,7 @@ class ClassController {
 
         const data = req.body
 
-        const classExists = await Class.findOne({ subject:  data.subject})
+        const classExists = await Product.findOne({ subject: data.subject })
         if (classExists && classExists.subclass == data.subclass) {
             return res.status(400).json({
                 error: true,
@@ -39,8 +41,7 @@ class ClassController {
             })
         }
 
-
-        const classe = await Class.create(data, (err) => {
+        const classe = await Product.create(data, (err) => {
             if (err) return res.status(400).json({
                 error: true,
                 code: 101,
@@ -76,7 +77,7 @@ class ClassController {
 
         const { _id, email } = req.body
 
-        const usuarioExiste = await Class.findOne({ _id: _id })
+        const usuarioExiste = await Product.findOne({ _id: _id })
 
         if (!usuarioExiste) {
             return res.status(400).json({
@@ -87,7 +88,7 @@ class ClassController {
         }
 
         if (email != usuarioExiste.email) {
-            const emailExiste = await Class.findOne({ email })
+            const emailExiste = await Product.findOne({ email })
             if (emailExiste) {
                 return res.status(400).json({
                     error: true,
@@ -102,7 +103,7 @@ class ClassController {
             dados.password = await bcrypt.hash(dados.password, 8)
         }
 
-        await Class.updateOne({ _id: dados._id }, dados, (err) => {
+        await Product.updateOne({ _id: dados._id }, dados, (err) => {
             if (err) return res.status(400).json({
                 error: true,
                 code: 111,
@@ -117,7 +118,7 @@ class ClassController {
     }
 
     async delete(req, res) {
-        const usuarioExiste = await Class.findOne({ _id: req.params.id })
+        const usuarioExiste = await Product.findOne({ _id: req.params.id })
 
         if (!usuarioExiste) {
             return res.status(400).json({
@@ -127,7 +128,7 @@ class ClassController {
             })
         }
 
-        const user = await Class.deleteOne({ _id: req.params.id }, (err) => {
+        const user = await Product.deleteOne({ _id: req.params.id }, (err) => {
             if (err) return res.status(400).json({
                 error: true,
                 code: 105,
@@ -142,4 +143,4 @@ class ClassController {
     }
 }
 
-export default new ClassController()
+export default new ProductController()

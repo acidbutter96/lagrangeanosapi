@@ -1,7 +1,11 @@
 import mongoose from 'mongoose'
 import mongoosePaginate from 'mongoose-paginate-v2'
 
-const Class = new mongoose.Schema({
+const Product = new mongoose.Schema({
+    product: {
+        type: String,
+        required: true
+    },
     subject: {
         type: String,
         required: true
@@ -26,10 +30,10 @@ const Class = new mongoose.Schema({
         type: Number,
         required: true
     }
-},{
+}, {
     timestamps: true
 })
 
-Class.plugin(mongoosePaginate)
+Product.plugin(mongoosePaginate)
 
-export default new mongoose.model('class',Class)
+export default new mongoose.model('product', Product)
