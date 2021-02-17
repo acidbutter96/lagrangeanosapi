@@ -2,11 +2,11 @@
   "name": "lagrangeanosapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
     "build": "sucrase ./src -d ./outDir --transforms imports",
-    "start": "node ./src/app.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -34,5 +34,8 @@
   "devDependencies": {
     "nodemon": "^2.0.7",
     "sucrase": "^3.17.1"
+  },
+  "engines": {
+    "node": "10.19.0"
   }
 }
