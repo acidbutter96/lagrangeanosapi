@@ -5,7 +5,7 @@ class DataBase {
         this.mongoDataBase()
     }
     mongoDataBase() {
-        this.mongoDBConnection = mongoose.connect('mongodb+srv://admin:123@cluster0.dw7bq.mongodb.net/lagrangeanos?retryWrites=true&w=majority', {
+        this.mongoDBConnection = mongoose.connect("", {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }).then(() => {
